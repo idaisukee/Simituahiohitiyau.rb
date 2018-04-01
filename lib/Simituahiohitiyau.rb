@@ -5,6 +5,7 @@ class Simituahiohitiyau
 	Prd = ['.emacs.d', 'linux_dotfiles']
 	Doc = ['humed', 'blog', 'cbt', 'latin', 'pub', 'weblog']
 	Dat = ['medo', 'plane', 'psn', 'sleep', 'timetable', 'timetable2017', 'x40c']
+	Repos_simple_local = '../dat/repos_simple.json'
 #	@target = '/home/ieremius/'
 	Target_root = '/tmp'
 	def repos
@@ -16,6 +17,12 @@ class Simituahiohitiyau
 		obj = JSON.parse(self::repos)
 		obj.map do |i|
 			i['name']
+		end
+	end
+
+	def repos_simple_local
+		File.open(Repos_simple_local) do |io|
+			obj = JSON.load(io)
 		end
 	end
 
@@ -41,6 +48,5 @@ class Simituahiohitiyau
 		end
 	end
 end
-p Simituahiohitiyau.new.repos
-p Simituahiohitiyau.new.repos_simple
-p Simituahiohitiyau.new.command
+
+p Simituahiohitiyau.new.repos_simple_local
